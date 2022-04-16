@@ -1,0 +1,33 @@
+year,Alcohol_total,Drug_total,Type
+2004,25,171,Injuries Death
+2005,18,174,Injuries Death
+2006,20,202,Injuries Death
+2007,33,171,Injuries Death
+2008,17,143,Injuries Death
+2009,15,152,Injuries Death
+2010,22,139,Injuries Death
+2011,23,117,Injuries Death
+2012,32,149,Injuries Death
+2013,25,140,Injuries Death
+2014,25,112,Injuries Death
+2015,34,159,Injuries Death
+2016,61,127,Injuries Death
+2017,42,109,Injuries Death
+2018,49,140,Injuries Death
+2019,30,138,Injuries Death
+2004,1599,87,Crash
+2005,1556,78,Crash
+2006,1438,73,Crash
+2007,1379,92,Crash
+2008,1234,85,Crash
+2009,1162,88,Crash
+2010,1155,127,Crash
+2011,1132,107,Crash
+2012,1248,145,Crash
+2013,1161,131,Crash
+2014,1145,120,Crash
+2015,1213,156,Crash
+2016,1207,245,Crash
+2017,1345,270,Crash
+2018,1288,267,Crash
+2019,1251,230,Crash
