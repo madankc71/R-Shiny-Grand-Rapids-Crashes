@@ -9,7 +9,7 @@ server <- function(input, output) {
   
   
   output$barplot <- renderPlot({
-    library(reshape2)
+    
     barchart_data <- barchart_data %>% filter(Type==input$Type)
     barchart_data <- melt(barchart_data[,c('year','Alcohol_total','Drug_total')], id.vars = 1)
     g <- ggplot(barchart_data, aes(x = year, y = value)) +

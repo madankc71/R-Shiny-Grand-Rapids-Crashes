@@ -1,13 +1,5 @@
 #Importing datasets
 
-barchart_data <- read.csv("barchart_data.csv")
-
-counties <- read.csv("counties.csv")
-
-piechart_total <- read.csv("piechart_total.csv")
-
-crashes_total <- read.csv("crashes_total.csv")
-
 library(shiny)
 library(shinythemes)
 library(ggplot2)
@@ -23,6 +15,13 @@ library(leaflet)
 library(sf)
 library(tigris)
 
+barchart_data <- read.csv("barchart_data.csv")
+
+counties <- read.csv("counties.csv")
+
+piechart_total <- read.csv("piechart_total.csv")
+
+crashes_total <- read.csv("crashes_total.csv")
 
 title<-
   # Define UI
