@@ -1,17 +1,39 @@
 barchart_data <- read.csv("barchart_data.csv")
+View(barchart_data)
 counties <- read.csv("counties.csv")
 piechart_total <- read.csv("piechart_total.csv")
 crashes_total <- read.csv("crashes_total.csv")
 
 server <- function(input, output) {
-  
-  output$barplot <- renderPlot({
+  #bar chart of the total crashes due to alcohol and drugs from 2004 to 2019.
+  output$barplot <- renderPlot({ #Not in use now
     library(reshape2)
     barchart_data <- barchart_data %>% filter(Type==input$Type)
     barchart_data <- melt(barchart_data[,c('year','Alcohol_total','Drug_total')], id.vars = 1)
-    g <- ggplot(barchart_data, aes(x = year, y = value)) +
-      geom_bar(aes(fill = variable),stat = "identity",position = "dodge")
+    View(barchart_data)
+    barr <- data.frame( Year = barchart_data$year,
+                        
+                        Frequency = c(barchart_data$Alcohol_total, barchart_data$Drug_total),
+                        Type = c(rep("Alcohol Crash", nrow(barchart_data)),
+                                 rep("Drug Crash", nrow(barchart_data)))
+    )
+    
+    g <- ggplot(barchart_data, aes(x = Year, y = Frequency, col = Type)) +
+      geom_bar()
     g
+  })
+  
+  output$barr <- renderPlot({
+    barchart_data <- barchart_data %>% filter(Type==input$Type)
+    barchart1 <- data.frame(Year = barchart_data$year,
+                            Number1 = c(barchart_data$Alcohol_total, barchart_data$Drug_total),
+                            Type = c(rep("Alcohol", nrow(barchart_data)),
+                                     rep("Drug", nrow(barchart_data))))
+ 
+  ggplot(barchart1, aes( y = Number1, x = Year, fill=Type))+geom_bar(stat='identity')
+  ggplot(barchart1, aes(fill=Type, y=Number1, x=Year)) + 
+    geom_bar(position="dodge", stat="identity") +
+    xlab("Year") + ylab("Frequency")
   })
   
   #line chart of crash

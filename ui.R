@@ -18,18 +18,21 @@ title<-
   # Define UI
   ui <- fluidPage(theme = shinytheme("cerulean"),
                   navbarPage("Grand Rapids Crash",
-                             tabPanel("Alcohol/Drug",
+                            
+                             tabPanel("Comparison",
+                                      h1("Comparison between alcohol and drug in 'crashes' and 'injuries and death'"),
                                       sidebarPanel(
                                         selectInput("Type", "Select Type", choices = unique(barchart_data$Type))
                                         ), # sidebarPanel
                                       mainPanel(
-                                       plotOutput("barplot"),
-                                       p("This is the line chart from the year 2004 to 2019. We can filter either Crash or injuries and death due to alcohol and drugs. Then, it compares the total crash dues to alcohol and drugs per each year."),
+                                       plotOutput("barr"),
+                                       p("This is the bar chart from the year 2004 to 2019. We can filter either Crash or injuries and death due to alcohol and drugs. Then, it compares the total crash dues to alcohol and drugs per each year."),
                                        p("From the graph, we can visualize that the total number of crashes due alcohol is higher than that due to drugs."),
                                        p("However, the injuries and death rate per crash is higher due to drugs than in alcohol though the number is higher.")
                                      ) # mainPanel
                              ),
                              tabPanel("County", #countywise line chart of crash
+                                      h1("'Crashes' and 'Injuries and Death' with respect to county"),
                                       sidebarPanel(
                                         selectInput("county", "Select County", choices = unique(counties$County))
                                       ), # sidebarPanel
@@ -38,14 +41,18 @@ title<-
                                           tabPanel("Crashes",plotOutput("linechart1")),
                                           tabPanel("Injuries and Death",plotOutput("linechart2"))
                                         ),
-                                        p("There are two tabs for the visualization for each counties: 1. Crashes 2. Injuries and death. The counties can be filtered from the sidebar panel."),
-                                        p("From the visualizations above, it is proven that the all the counties have higher number of crashes. However, number of injured and died people is higher in all of the counties."),
+                                        p("There are two tabs for the visualization for each counties:
+                                          1. Crashes 
+                                          2. Injuries and death. 
+                                          The counties can be filtered from the sidebar panel."),
+                                        p("From the visualizations above, it is proven that the all the counties have higher number of crashes due to alcohol. However, injuries and death of people due to drugs is higher than that due to alcohol in all of the counties."),
                                         
                                         
                                       ) # mainPanel
                              ), #end - countywise line chart of crash
                              
-                             tabPanel("Total Crashes - Year", #piechart
+                             tabPanel("Proportion", #piechart
+                                      h1("Proportion of Total Crashes in 4 Counties per Year"),
                                       sidebarPanel(
                                         selectInput("time", "Select a Year", choices = unique(piechart_total$year))
                                       ), # sidebarPanel
